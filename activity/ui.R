@@ -10,21 +10,32 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Xu's Measurement Class Project"),
 
-  # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+
+      checkboxGroupInput('person', 'People included in group analysis:',
+                         c('Jake', 'Joe', 'Sheldon', 'Xu', 'Yun'),
+                         selected = c('Jake', 'Joe', 'Sheldon', 'Xu', 'Yun')),
+      
+      br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
+      br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
+      
+      selectInput('person2', 'Person for individual analysis:',
+                  c('Jake', 'Joe', 'Sheldon', 'Xu', 'Yun'),
+                  selected = 'Jake')
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
+      h2('Group analysis'),
+      plotOutput("plot1"),
+      plotOutput("plot0"),
+      h2(textOutput('who')),
+      plotOutput("plot_ts"),
+      plotOutput("plot3"),
+      plotOutput('plot2')
     )
   )
 ))
